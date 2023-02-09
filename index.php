@@ -27,4 +27,3 @@ echo "$chaineDeCaracteres03 $entier euros<br>";
 
 // FONCTIONS CHAINES DE CARACTERES
 
-// TIME CODE 43:31
