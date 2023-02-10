@@ -188,7 +188,7 @@ while ($i <= 10){
 ?>
 
 
-<h1>Exercic 9</h1>
+<h1>Exercice 9</h1>
 
 <p>Nous souhaitons savoir si une personne est imposable en fonction de son âge et de son sexe.Si la personne est une femme dont l’âge est compris entre 18 et 35 ans ou si c’est un homme de plus de 20 ans, alors celle-ci est imposable (sinon ce n’est pas le cas, « non imposable »).</p>
 
@@ -214,7 +214,7 @@ echo "Cette personne est " .impot($age, $sexe).".<br>";
 
 ?>
 
-<h1>Exercic 10</h1>
+<h1>Exercice 10</h1>
 
 <p>A partir d’un montant à payer et d’une somme versée pour régler un achat, écrire l’algorithme qui affiche à un utilisateur un rendu de monnaie en nombre de billets de 10 € et 5 €, de pièces de 2 € et 1 €.</p>
 
@@ -250,7 +250,9 @@ Monnaie($aPayer, $sommeVersee);
 
 ?>
 
-<h1>Exercic 11</h1>
+<!-- 10.02.2023 -->
+
+<h1>Exercice 11</h1>
 
 <p>Initialiser un tableau de x marques de voitures. Ecrire un algorithme permettant de parcourir ce tableau et d’en afficher le contenu (une marque de voiture par ligne). Il est également demandé d’afficher le nombre de marques de voitures présentes dans le tableau.</p>
 
@@ -259,16 +261,48 @@ Monnaie($aPayer, $sommeVersee);
 <?php
 
 
+$carStock = array("Peugeot", "Renault", "BMW", "Mercedes");
+
+$nbcar = count($carStock);
+
+echo "Il y a : " .$nbcar ." marques de voitures dans la concession.<br>";
+
+echo '<ul>';
+foreach($carStock as $stck){
+    echo '<li>'.$stck.'</li><br>';
+}
+echo '</ul>';
 
 
+?>
 
 
+<h1>Exercice 12</h1>
+
+<p>A partir d’une fonction personnalisée et à partir d’un tableau de prénoms et de langue associée<br>
+(tableau contenant clé et valeur), dire bonjour aux différentes personnes dans leur langue<br>
+respective (français ➔ « Salut », anglais ➔ « Hello », espagnol ➔ « Hola »)<br>
+Exemple : tableau ➔ Mickaël -> FRA, Virgile -> ESP, Marie-Claire -> ENG</p>
+
+<h2>Résultat</h2>
+
+<?php
+
+$bjr = array('fr' => 'bonjour', 'esp' => 'hola', 'eng' => 'hello');
+$ppl = array('mickaël' => 'fr', 'virgile' => 'esp', 'marie-claire' => 'eng');
+
+// function sayHello ($ppl, $bjr){
+//     if ($ppl == "fr"){
+//         echo key($bjr);
+//     }
+// }
+var_dump($bjr);
+echo ".<br>";
+var_dump($ppl);
+
+// foreach ($ppl as $greetings => $bjr){
+
+// }
 
 
-
-
-
-
-
-
-
+for()
