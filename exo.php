@@ -288,21 +288,32 @@ Exemple : tableau ➔ Mickaël -> FRA, Virgile -> ESP, Marie-Claire -> ENG</p>
 
 <?php
 
-$bjr = array('fr' => 'bonjour', 'esp' => 'hola', 'eng' => 'hello');
-$ppl = array('mickaël' => 'fr', 'virgile' => 'esp', 'marie-claire' => 'eng');
+// $bjr = array('bonjour', 'hola', 'hello');
+$ppl = array('mickaël' => 'bonjour' , 'virgile' => 'hola' , 'marie-claire' => 'hello');
 
 // function sayHello ($ppl, $bjr){
-//     if ($ppl == "fr"){
+    //     if ($ppl == "fr"){
 //         echo key($bjr);
 //     }
 // }
 var_dump($bjr);
 echo ".<br>";
 var_dump($ppl);
+echo ".<br>";
 
-// foreach ($ppl as $greetings => $bjr){
+foreach ($ppl as $ppl => $greetings){
+    echo $greetings ." ". $ppl ."<br>";
+}
 
-// }
+?>
 
+<h1>Exercice 13</h1>
 
-for()
+<p>A partir d’une fonction personnalisée et à partir d’un tableau de prénoms et de langue associée<br>
+(tableau contenant clé et valeur), dire bonjour aux différentes personnes dans leur langue<br>
+respective (français ➔ « Salut », anglais ➔ « Hello », espagnol ➔ « Hola »)<br>
+Exemple : tableau ➔ Mickaël -> FRA, Virgile -> ESP, Marie-Claire -> ENG</p>
+
+<h2>Résultat</h2>
+
+<?php
