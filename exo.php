@@ -377,16 +377,16 @@ class Personne {
 
     }
     
-    public function Name(){
+    public function name(){
         return $this -> name;
     }
-    public function Firstname(){
+    public function firstname(){
         return $this -> firstname;
     }
-    public function Birthdate(){
+    public function birthdate(){
         return $this -> birthD;
     }
-    public function Age(){
+    public function age(){
         $birthD = new DateTime($this -> birthD);
         $today = new DateTime();
         $age = $birthD -> diff($today);
@@ -398,8 +398,8 @@ class Personne {
 $p1 = new Personne("DUPONT", "Michel","1980-02-19");
 $p2 = new Personne("DUCHEMIN", "Alice","1985-01-17");
 
-echo $p1->Name() ." ". $p1->Firstname() ." a ".  $p1->Age()."<br>";
-echo $p2->Name() ." ". $p2->Firstname() ." a ".  $p2->Age()."<br>";
+echo $p1->name() ." ". $p1->firstname() ." a ".  $p1->age()."<br>";
+echo $p2->name() ." ". $p2->firstname() ." a ".  $p2->age()."<br>";
 
 
 ?>
