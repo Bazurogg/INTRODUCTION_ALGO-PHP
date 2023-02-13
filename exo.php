@@ -296,8 +296,8 @@ $ppl = array('mickaël' => 'bonjour' , 'virgile' => 'hola' , 'marie-claire' => '
 //         echo key($bjr);
 //     }
 // }
-var_dump($bjr);
-echo ".<br>";
+// var_dump($bjr);
+// echo ".<br>";
 var_dump($ppl);
 echo ".<br>";
 
@@ -309,11 +309,97 @@ foreach ($ppl as $ppl => $greetings){
 
 <h1>Exercice 13</h1>
 
-<p>A partir d’une fonction personnalisée et à partir d’un tableau de prénoms et de langue associée<br>
-(tableau contenant clé et valeur), dire bonjour aux différentes personnes dans leur langue<br>
-respective (français ➔ « Salut », anglais ➔ « Hello », espagnol ➔ « Hola »)<br>
-Exemple : tableau ➔ Mickaël -> FRA, Virgile -> ESP, Marie-Claire -> ENG</p>
+<p>Calculer la moyenne générale d'un élève dont les notes sont renseignées dans un tableau (pas de coefficient). Elle devra être affichée avec 2 décimales.</p>
 
 <h2>Résultat</h2>
 
 <?php
+
+$notes = ["10", "12", "8", "19", "3", "16", "11","13", "9"];
+$listeNotes = implode(', ', $notes);
+$nbDeNotes = count($notes);
+$sumNotes = array_sum($notes);
+$moyNotes = round($sumNotes / $nbDeNotes, 2);
+
+
+// foreach ($notes as $notes){
+//     echo $notes .', ';
+// } Liste chaque éléments du tableau.
+
+echo "Les notes obtenues pas l'élèves sont : " .$listeNotes ."."."<br>";
+
+echo "Sa moyenne générale est de :" .$moyNotes ."."."<br>";
+
+?>
+
+<h1>Exercice 14</h1>
+
+<p>Calculer l'âge exact d'une personne à partir de sa date de naissance (en années, mois, jours).</p>
+
+<h2>Résultat</h2>
+
+<?php
+
+// TEST AFFICHAGE DATE DU JOUR :
+// $aujourdhui = new DateTime('now');
+// echo  $aujourdhui->format('Y-m-d H:i:s');
+
+$birthDate = ("2-9-1964");
+$today = date('d-m-Y');
+$age = date_diff(date_create($birthDate), date_create($today));
+
+echo "Age de la personne : ". $age->format('%y ans, %m mois, et %d jours');
+
+
+?>
+
+<h1>Exercice 15</h1>
+
+<p>Créer une classe Personne (nom, prénom et date de naissance)<br>
+Instancier 2 personnes et afficher leurs informations : nom, prénom et âge.<br>
+$p1 = new Personne("DUPONT", "Michel", "1980-02-19") ;<br>
+$p2 = new Personne("DUCHEMIN", "Alice", "1985-01-17") ;</p>
+
+<h2>Résultat</h2>
+
+
+<?php
+
+class Personne {
+    public $name;
+    public $firstname;
+    public $birthD;
+
+    public function __construct($name, $firstname, $birthD){
+        $this->name = $name;
+        $this->firstname = $firstname;
+        $this->birthD = $birthD;
+
+    }
+    
+    public function Name(){
+        return $this -> name;
+    }
+    public function Firstname(){
+        return $this -> firstname;
+    }
+    public function Birthdate(){
+        return $this -> birthD;
+    }
+    public function Age(){
+        $birthD = new DateTime($this -> birthD);
+        $today = new DateTime();
+        $age = $birthD -> diff($today);
+        return $age->format('%y');
+    }
+}
+
+
+$p1 = new Personne("DUPONT", "Michel","1980-02-19");
+$p2 = new Personne("DUCHEMIN", "Alice","1985-01-17");
+
+echo $p1->Name() ." ". $p1->Firstname() ." a ".  $p1->Age()."<br>";
+echo $p2->Name() ." ". $p2->Firstname() ." a ".  $p2->Age()."<br>";
+
+
+?>
