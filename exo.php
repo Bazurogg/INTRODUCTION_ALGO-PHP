@@ -403,3 +403,4 @@ echo $p2->name() ." ". $p2->firstname() ." a ".  $p2->age()."<br>";
 
 
 ?>
+
