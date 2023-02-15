@@ -47,7 +47,13 @@ table, th, td {
   background-color: #FFE99E;
   border-radius: 8px;
   text-align: center;
+  white-space: nowrap;
 }
+
+fieldset{
+  background-color: #FFE99E;
+}
+
 </style>
 
 <!-- TEST TABLE TO UNDERSTAND HOW IT WORKS IN HTML -->
@@ -152,7 +158,7 @@ $nomsInput = array("Nom","Prénom","Ville");
 
 function afficherInput($nomsInput){
   foreach ($nomsInput as $name){
-    echo '<label for="'.$name.'">'.$name.':</label><br>';
+    echo '<label for="'.$name.'">'.$name.'</label><br>';
     echo '<input type="text" name="'.$name.'" id="'.$name.'"><br>';                    
   }
 }
@@ -192,8 +198,8 @@ $elements = array("Monsieur","Madame","Mademoiselle");
 
 function alimenterListeDeroulante($elements){
   echo '<select>';
-  foreach ($elements as $gender){
-    echo '<option value="">'.$gender.'</option>';
+  foreach ($elements as $civil){
+    echo '<option value="">'.$civil.'</option>';
   }
   echo '</select>';
 }
@@ -241,3 +247,137 @@ Créer une fonction personnalisée permettant d’afficher l’image N fois à l
 <h2>Résultat</h2>
 
 <?php
+
+function repeterImage($img,$n){
+  for ($i=1; $i<=$n; $i++){
+    echo '<img src="'.$img.'" title="Oh le petit toutou !" alt ="Petit chien"/>';
+  }
+}
+
+echo repeterImage('http://my.mobirise.com/data/userpic/764.jpg', 2);
+
+?>
+
+<h1>Exercice 9</h1>
+
+<p>Créer une fonction personnalisée permettant d’afficher des boutons radio avec un tableau de
+valeurs en paramètre ("Monsieur","Madame","Mademoiselle").<br>
+Exemple :<br>
+afficherRadio($nomsRadio);
+
+</p>
+
+<h2>Résultat</h2>
+
+<!-- <fieldset>
+    <legend>Select a maintenance drone:</legend>
+
+    <div>
+      <input type="radio" id="huey" name="drone" value="huey"
+             checked>
+      <label for="huey">Huey</label>
+    </div>
+
+    <div>
+      <input type="radio" id="dewey" name="drone" value="dewey">
+      <label for="dewey">Dewey</label>
+    </div>
+
+    <div>
+      <input type="radio" id="louie" name="drone" value="louie">
+      <label for="louie">Louie</label>
+    </div>
+</fieldset>
+ -->
+
+
+<?php
+$nomsRadio = array("Monsieur","Madame","Mademoiselle");
+
+function afficherRadio($nomsRadio) {
+  foreach ($nomsRadio as $gender){
+    echo '<input type="radio" id='.$gender.' name="nomsRadio" value='.$gender.'>';
+    echo '<label for = "'.$gender.'">'.$gender.'</label><br>';
+  }
+}
+
+echo afficherRadio($nomsRadio);
+
+?>
+
+
+<h1>Exercice 10</h1>
+
+<p>En utilisant l’ensemble des fonctions personnalisées crées précédemment, créer un formulaire<br>
+complet qui contient les informations suivantes : champs de texte avec nom,<br> prénom, adresse email, ville, sexe et une liste de choix parmi lesquels<br> on pourra sélectionner un intitulé de formation :<br>
+« Développeur Logiciel », « Designer web », « Intégrateur » ou « Chef de projet ».<br>
+Le formulaire devra également comporter un bouton permettant de le soumettre à un traitement de validation (submit).<br>
+
+</p>
+
+<h2>Résultat</h2>
+
+<?php
+echo '<fieldset>';
+  echo '<legend><h2>Formulaire d\'inscription :</h2></legend>';
+
+  $etatCivil = array("Monsieur","Madame","Mademoiselle");
+
+  echo '<p>Civilité :</p>';
+
+  function listeetatcivil($etatCivil){
+    foreach ($etatCivil as $civilite){
+      echo '<input type="radio" id='.$civilite.' name="nomsRadio" value='.$civilite.'>';
+      echo '<label for = "'.$civilite.'">'.$civilite.'</label>';
+    }
+  }
+  echo listeetatcivil($etatCivil);
+  echo '<br>';
+  echo '<br>';
+
+  $forms = array("Nom","Prénom","Ville", "Adesse email");
+
+  function form($forms){
+    foreach ($forms as $input){
+      echo '<label for="'.$input.'">'.$input.'</label><br>';
+      echo '<input type="text" name="'.$input.'" id="'.$input.'"><br>';                    
+    }
+  }
+  echo form($forms);
+
+  echo '<br>';
+
+  $genderRadio = array("Masculin","Féminin","Ne pas renseigné");
+
+  echo '<legend>Sexe :</legend>';
+
+  function afficherGenre($genderRadio) {
+    foreach ($genderRadio as $genre){
+      echo '<input type="radio" id='.$genre.' name="nomsRadio" value='.$genre.'>';
+      echo '<label for = "'.$genre.'">'.$genre.'</label>';
+    }
+  }
+  echo afficherGenre($genderRadio);
+
+  echo '<br>';
+  echo '<br>';
+
+  $formation = array("Développeur Logiciel","Designer web","Intégrateur", "Chef de projet");
+
+  function listeFormation($formation){
+    echo 'Veuillez indiquer le titre de la formation souhaitée :'.'<br>';
+    echo '<br>';
+    echo '<select >';
+    foreach ($formation as $titreFormation){
+      echo '<option value="">'.$titreFormation.'</option>';
+    }
+    echo '</select><br>';
+  }
+
+  echo listeFormation($formation);
+
+  echo '<br>';
+  echo '<button type="submit">Envoyer</button>';
+
+echo '</fieldset>';
+
