@@ -50,6 +50,15 @@ table, th, td {
   white-space: nowrap;
 }
 
+h1{
+  color:darkslateblue;
+}
+
+h2{
+  color:coral;
+  text-decoration: underline;
+}
+
 fieldset{
   background-color: #FFE99E;
 }
@@ -318,16 +327,17 @@ Le formulaire devra également comporter un bouton permettant de le soumettre à
 <h2>Résultat</h2>
 
 <?php
-echo '<fieldset>';
-  echo '<legend><h2>Formulaire d\'inscription :</h2></legend>';
 
+echo '<fieldset>';
+  echo '<legend><h3>Formulaire d\'inscription :</h3></legend>';
+  
   $etatCivil = array("Monsieur","Madame","Mademoiselle");
 
   echo '<p>Civilité :</p>';
 
   function listeetatcivil($etatCivil){
     foreach ($etatCivil as $civilite){
-      echo '<input type="radio" id='.$civilite.' name="nomsRadio" value='.$civilite.'>';
+      echo '<input type="radio" id='.$civilite.' name="civiliteRadio" value='.$civilite.'>';
       echo '<label for = "'.$civilite.'">'.$civilite.'</label>';
     }
   }
@@ -353,7 +363,7 @@ echo '<fieldset>';
 
   function afficherGenre($genderRadio) {
     foreach ($genderRadio as $genre){
-      echo '<input type="radio" id='.$genre.' name="nomsRadio" value='.$genre.'>';
+      echo '<input type="radio" id='.$genre.' name="genreRadio" value='.$genre.'>';
       echo '<label for = "'.$genre.'">'.$genre.'</label>';
     }
   }
@@ -381,3 +391,55 @@ echo '<fieldset>';
 
 echo '</fieldset>';
 
+?>
+
+<h1>Exercice 11</h1>
+
+<p>Ecrire une fonction personnalisée qui affiche une date en français<br>
+(en toutes lettres) à partir d’une chaîne de caractère représentant une date.</p>
+
+<h2>Résultat</h2>
+
+<?php
+
+// TEST #1 : ! NE FONCTIONNE PAS LA DATE S'AFFICHE TOUJOURS EN ANGLAIS !
+// function formaterDateFR($date){
+  //   $dateObj = new DateTime($date);
+  //   $jour = $dateObj->format('l');
+//   $jourNb = $dateObj->format('j');
+//   $mois = $dateObj->format('F');
+//   $annee = $dateObj->format('Y');
+//   echo $jour.' '.$jourNb.' '.$mois.' '.$annee;
+// }
+// echo formaterDateFR("2018-02-23");
+// echo '<br>';
+
+function formaterDateFr($date) {
+  $dateObj = new DateTime($date);
+  $dateFormat = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+  // IntlDateFormatter est une class qui posséde plusieurs constantes qui permet de spécifier le style de format pour la date et l'heure 
+  // IntlDateFormatter::LONG (Configure la date, ici en long format. ("LONG, MEDIUM, Etc.")
+  // IntlDateFormatter::NONE (Indique que l'on ne veux pas que l'heure soit afficher)
+  $dateFormat -> setPattern('EEEE d MMMM y');
+  echo $dateFormat -> format($dateObj);
+}
+
+echo formaterDateFr("2018-02-23");
+
+?>
+
+<h1>Exercice 12</h1>
+
+<p>La fonction var_dump($variable) permet d’afficher les informations d’une variable.<br>
+Soit le tableau suivant :<br>
+$tableauValeurs=array(true,"texte",10,25.369,array("valeur1","valeur2"));<br>
+A l’aide d’une boucle, afficher les informations des variables contenues dans le tableau.
+</p>
+
+<h2>Résultat</h2>
+
+<?php
+
+$tableauValeurs=array(true,"texte",10,25.369,array("valeur1","valeur2"));
+
+var_dump($tableauValeurs);
