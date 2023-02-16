@@ -15,7 +15,7 @@ $texte = "Mon texte en parametre";
 
 function convertirMajRouge ($texte){
     // return $texte = strtoupper($texte); (AFFICHAGE CAPS)
-    ?><span style = color:red><?php echo $texte= strtoupper($texte); ?></span>
+    ?><span style = color:red><?php echo $texte= strtoupper($texte);?></span>
     <?php
 }
 
@@ -37,9 +37,12 @@ Vous devrez appeler la fonction comme suit : afficherTableHTML($capitales);
 
 <h2>Résultat</h2>
 
-<html>
-
 <style>
+
+body {
+  background-color: #F6E3CE;
+}
+
 table, th, td {
   width: 60%;
   border:1px solid white;
@@ -51,11 +54,11 @@ table, th, td {
 }
 
 h1{
-  color:darkslateblue;
+  color: #DBA901;
 }
 
 h2{
-  color:coral;
+  color: #A9A9F5;
   text-decoration: underline;
 }
 
@@ -171,10 +174,10 @@ function afficherInput($nomsInput){
     echo '<input type="text" name="'.$name.'" id="'.$name.'"><br>';                    
   }
 }
+
 echo afficherInput($nomsInput);
 
 ?>
-
 
 <h1>Exercice 6</h1>
 
@@ -182,14 +185,14 @@ echo afficherInput($nomsInput);
 de valeurs.
 Exemple :<br>
 $elements = array("Monsieur","Madame","Mademoiselle");<br>
-alimenterListeDeroulante($elements);
+alimenterListeDeroulante($elements)
 </p>
 
+<!--
 <h2>Résultat</h2>
 
-
-<!-- EXEMPLE MENU DEROULANT -->
-<!-- <label for="pet-select">Choose a pet:</label>
+EXEMPLE MENU DEROULANT 
+ <label for="pet-select">Choose a pet:</label>
 
 <select name="pets" id="pet-select">
   <option value="">--Please choose an option--</option>
@@ -199,8 +202,9 @@ alimenterListeDeroulante($elements);
   <option value="parrot">Parrot</option>
   <option value="spider">Spider</option>
   <option value="goldfish">Goldfish</option>
-</select> -->
-  
+</select>
+-->
+
 <?php
 
 $elements = array("Monsieur","Madame","Mademoiselle");
@@ -263,7 +267,7 @@ function repeterImage($img,$n){
   }
 }
 
-echo repeterImage('http://my.mobirise.com/data/userpic/764.jpg', 2);
+echo repeterImage('http://my.mobirise.com/data/userpic/764.jpg', 4);
 
 ?>
 
@@ -442,4 +446,13 @@ A l’aide d’une boucle, afficher les informations des variables contenues dan
 
 $tableauValeurs=array(true,"texte",10,25.369,array("valeur1","valeur2"));
 
-var_dump($tableauValeurs);
+foreach ($tableauValeurs as $valeur) {
+  var_dump($valeur);
+  echo "<br>";
+}
+
+?>
+
+<!-- 16/02/2023 -->
+
+
