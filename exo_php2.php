@@ -35,6 +35,7 @@ fieldset{
 }
 
 .resultat {
+  width:70%;
   background-color: white;
 }
 
@@ -507,7 +508,7 @@ foreach ($tableauValeurs as $valeur) {
 ?>
 </fieldset>
 
-<!-- 16/02/2023 -->
+<!-- 17/02/2023 -->
 
 <h1>Exercice 13</h1>
 
@@ -523,11 +524,30 @@ tests pour vérifier la cohérence de la classe Voiture. Vous devez afficher les
 suivants :
 </p>
 
+
+
 <fieldset class="resultat">
   
   <legend><h2>Résultat</h2></legend>
   
   <?php
 
+  $voiture = array("v1" => array("Peugeot","408","5"));
+  
+
+  class Voiture {
+    public $_marque;
+    public $_modele;
+    public $_nbPortes;
+    public $_vitesseActuelle;
+    public $_stat = 0;
+    public function demarrer(){
+      $this->_stat = 1;
+    }
+  }
+
+  var_dump($voiture);
+
   ?>
 </fieldset>
+

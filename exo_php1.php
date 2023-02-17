@@ -20,6 +20,7 @@ h2{
 }
 
 fieldset{
+    width:70%;
     background-color: white;
 }
 </style>
@@ -429,30 +430,31 @@ $p2 = new Personne("DUCHEMIN", "Alice", "1985-01-17") ;</p>
 <?php
 
 class Personne {
-    public $name;
-    public $firstname;
-    public $birthD;
 
-    public function __construct($name, $firstname, $birthD){
-        $this->name = $name;
-        $this->firstname = $firstname;
-        $this->birthD = $birthD;
+    private string $_name;
+    private string $_firstname;
+    private DateTime $_birthD;
+
+    public function __construct(string $name, string $firstname, string $birthD){
+        $this->_name = $name;
+        $this->_firstname = $firstname;
+        $this->_birthD = new DateTime($birthD);
 
     }
     
-    public function name(){
-        return $this -> name;
+    public function getName(){
+        return $this ->_name;
     }
-    public function firstname(){
-        return $this -> firstname;
+    public function getFirstname(){
+        return $this ->_firstname;
     }
-    public function birthdate(){
-        return $this -> birthD;
+    public function getBirthdate(){
+        return $this ->_birthD;
     }
     public function age(){
-        $birthD = new DateTime($this -> birthD);
+        $_birthD = $this->_birthD;
         $today = new DateTime();
-        $age = $birthD -> diff($today);
+        $age = $_birthD -> diff($today);
         return $age->format('%y');
     }
 }
@@ -460,9 +462,29 @@ class Personne {
 $p1 = new Personne("DUPONT", "Michel","1980-02-19");
 $p2 = new Personne("DUCHEMIN", "Alice","1985-01-17");
 
-echo $p1->name() ." ". $p1->firstname() ." a ".  $p1->age()."<br>";
-echo $p2->name() ." ". $p2->firstname() ." a ".  $p2->age()."<br>";
+echo $p1->getName() ." ". $p1->getFirstname() ." a ".  $p1->age()."<br>";
+echo $p2->getName() ." ". $p2->getFirstname() ." a ".  $p2->age()."<br>";
 
 ?>
 
 </fieldset>
+
+
+<!-- classe : Concept de Programmation orienté objet. C'est la structure de l'ensemble des entités qui composent un "Objet". Elle est composée de 2 parties :
+Une classe c'est un ensembre d'états et de comportements 
+_ les attributs
+_ les méthodes
+
+elle sert de "moul" à la creation d'un objet
+
+objet : Représentation d'une chose tangible et intangible à laquelle est associées des propriétés et des actions.
+
+Un objet est une instance d'une classe
+
+methode magique : méthode spéciale qui écrase l'action par défaut de PHP quand certaines actions sont réalisées sur un objet. Elles sont prédéfinies et préindexées par un double underscore "__", dans une class PHP et sont appelées automatiquement.
+
+getters et setters : Méthode publique qui permets d'avoir accés (modifications et/ou récupérerations) au contenu des propriétés privé d'un objet.
+
+methode to string : Méthode qui définit comment un objet de la classe est traité lorsqu'il est affiché comme une chaîne de caractères. Change la manière dont l'objet s'affichera lorsque l'on utilise echo par exemple.
+
+principe d'encaspuslation en POO : Correspond au groupement des données (propriétés, etc.) permettant de les manipuler au sein d’une classe. Grâce à ce groupement on empêche que certaines propriétés soient manipulées depuis l'extérieur d'une classe. Pour accéder aux différentes propriétés il faut utiliser des "Limiteurs d'accés" ou des "Niveaux de visibilité". (public, private, protected). -->
